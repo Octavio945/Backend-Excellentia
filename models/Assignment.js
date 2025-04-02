@@ -13,6 +13,15 @@ const Assignment = sequelize.define('Assignment', {
   due_date: {
     type: DataTypes.DATE,
     allowNull: false
+  },
+  course_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'Courses',
+      key: 'id'
+    },
+    onDelete: 'CASCADE'
   }
 }, {
   timestamps: true

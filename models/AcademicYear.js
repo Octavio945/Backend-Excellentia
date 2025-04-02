@@ -14,6 +14,10 @@ const AcademicYear = sequelize.define('AcademicYear', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  is_active: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  }
 }, {
   timestamps: true,
   hooks: {
@@ -28,7 +32,7 @@ const AcademicYear = sequelize.define('AcademicYear', {
           ],
         },
       });
-
+      
       if (overlappingAcademicYear) {
         throw new Error('Les années académiques se chevauchent !');
       }
@@ -45,7 +49,7 @@ const AcademicYear = sequelize.define('AcademicYear', {
           id: { [Op.ne]: academicYear.id },
         },
       });
-
+      
       if (overlappingAcademicYear) {
         throw new Error('Les années académiques se chevauchent !');
       }

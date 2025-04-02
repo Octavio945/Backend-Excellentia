@@ -8,6 +8,10 @@ const Filiere = sequelize.define('Filiere', {
   },
   description: {
     type: DataTypes.TEXT
+  },
+  cost: {
+    type: DataTypes.FLOAT,
+    allowNull: true
   }
 }, {
   timestamps: true

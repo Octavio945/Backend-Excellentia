@@ -23,6 +23,28 @@ const Grade = sequelize.define('Grade', {
       min: 0,
     },
   },
+  student_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'Users',
+      key: 'id',
+    },
+    onDelete: 'CASCADE',
+  },
+  course_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'Courses',
+      key: 'id',
+    },
+    onDelete: 'CASCADE',
+  },
+  is_validated: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  }
 }, {
   timestamps: true,
 });

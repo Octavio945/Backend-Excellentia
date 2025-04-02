@@ -5,11 +5,17 @@ const Course = require('./Course');
 const AcademicYear = require('./AcademicYear');
 
 const FiliereCourse = sequelize.define('FiliereCourse', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false
+  },
   academic_year_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: AcademicYear,
+      model: 'AcademicYears',
       key: 'id',
     },
     onDelete: 'CASCADE'
@@ -18,7 +24,7 @@ const FiliereCourse = sequelize.define('FiliereCourse', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Filiere,
+      model: 'Filieres',
       key: 'id',
     },
     onDelete: 'CASCADE'
@@ -27,7 +33,7 @@ const FiliereCourse = sequelize.define('FiliereCourse', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Course,
+      model: 'Courses',
       key: 'id',
     },
     onDelete: 'CASCADE'

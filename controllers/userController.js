@@ -98,7 +98,7 @@ exports.createUser = async (req, res) => {
   try {
     const {
       username, password, email, role, date_naissance, lieu_naissance, nationalite, sexe,
-      adresse, numero_telephone, diplome, etablissement_obtention, annee_diplome, filiereId,
+      adresse, numero_telephone, diplome_obtenu, etablissement_obtention, annee_diplome, filiereId,
       date_debut, nom_prenom_urgence, telephone_urgence
     } = req.body;
 
@@ -114,7 +114,7 @@ exports.createUser = async (req, res) => {
     // Vérification des champs obligatoires pour les étudiants
     if (userRole === 'student') {
       if (!username || !password || !email || !date_naissance || !lieu_naissance || !nationalite ||
-          !sexe || !adresse || !numero_telephone || !diplome || !etablissement_obtention ||
+          !sexe || !adresse || !numero_telephone || !diplome_obtenu || !etablissement_obtention ||
           !annee_diplome || !filiereId || !date_debut || !nom_prenom_urgence || !telephone_urgence) {
         return res.status(400).json({ message: 'Tous les champs obligatoires doivent être remplis pour les étudiants', details: 'Champs manquants ou invalides' });
       }
@@ -162,7 +162,7 @@ exports.createUser = async (req, res) => {
       sexe: sexe || null,
       adresse: adresse || null,
       numero_telephone,
-      diplome: diplome || null,
+      diplome_obtenu: diplome_obtenu || null,
       etablissement_obtention: etablissement_obtention || null,
       annee_diplome: annee_diplome || null,
       filiereId: userRole === 'student' ? filiereId : null,
@@ -182,7 +182,7 @@ exports.createUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { username, password, email, role, date_naissance, lieu_naissance, nationalite, sexe, adresse, numero_telephone, diplome, etablissement_obtention, annee_diplome, filiereId, date_debut, nom_prenom_urgence, telephone_urgence } = req.body;
+    const { username, password, email, role, date_naissance, lieu_naissance, nationalite, sexe, adresse, numero_telephone, diplome_obtenu, etablissement_obtention, annee_diplome, filiereId, date_debut, nom_prenom_urgence, telephone_urgence } = req.body;
 
     const user = await User.findByPk(id);
     if (!user) {
@@ -224,7 +224,7 @@ exports.updateUser = async (req, res) => {
       sexe: sexe || user.sexe,
       adresse: adresse || user.adresse,
       numero_telephone,
-      diplome: diplome || user.diplome,
+      diplome_obtenu: diplome_obtenu || user.diplome_obtenu,
       etablissement_obtention: etablissement_obtention || user.etablissement_obtention,
       annee_diplome: annee_diplome || user.annee_diplome,
       filiereId: role === 'student' ? filiereId : user.filiereId,  // Mise à jour de la filière uniquement si c'est un étudiant

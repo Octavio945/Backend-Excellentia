@@ -20,6 +20,7 @@ const newsController = require('../controllers/newsController');
 const questionController = require('../controllers/questionController');
 const professeurCourseController = require('../controllers/professeurCourseController');
 const filiereCourseController = require('../controllers/filiereCourseController');
+const dashboardController = require('../controllers/dashboardController');
 
 // 📌 **Routes pour l'authentification**
 router.post('/register', authController.register);
@@ -123,5 +124,8 @@ router.get('/courses/:course_id/filieres', filiereCourseController.getFilieresBy
 router.post('/filiereCourses', filiereCourseController.createFiliereCourse);
 router.put('/filiereCourses/:id', filiereCourseController.updateFiliereCourse);
 router.delete('/filiereCourses/:id', filiereCourseController.deleteFiliereCourse);
+
+// routes pour les statistiques 
+router.get('/dashboard-stats', authMiddleware, authorize('admin'), dashboardController.getDashboardStats);
 
 module.exports = router;

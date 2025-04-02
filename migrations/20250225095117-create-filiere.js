@@ -16,12 +16,16 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true,
       },
-      created_at: {
+      cost: {
+        type: Sequelize.FLOAT,
+        allowNull: true,
+      },
+      createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),
       },
-      updated_at: {
+      updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),

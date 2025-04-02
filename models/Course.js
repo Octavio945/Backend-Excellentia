@@ -10,6 +10,24 @@ const Course = sequelize.define('Course', {
   },
   description: {
     type: DataTypes.TEXT
+  },
+  teacher_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'Users',
+      key: 'id'
+    },
+    onDelete: 'CASCADE'
+  },
+  academic_year_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'AcademicYears',
+      key: 'id'
+    },
+    onDelete: 'CASCADE'
   }
 }, {
   timestamps: true
