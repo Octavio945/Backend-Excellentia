@@ -11,6 +11,24 @@ const Resource = sequelize.define('Resource', {
   file_path: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  course_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Course,
+      key: 'id',
+    },
+    onDelete: 'CASCADE'
+  },
+  uploaded_by: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: User,
+      key: 'id',
+    },
+    onDelete: 'CASCADE'
   }
 }, {
   timestamps: true

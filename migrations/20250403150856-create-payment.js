@@ -29,12 +29,24 @@ module.exports = {
         allowNull: true,
         unique: true,
       },
-      created_at: {
+      student_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+      },
+      remaining_amount: {
+        type: Sequelize.FLOAT,
+        allowNull: true,
+      },
+      createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),
       },
-      updated_at: {
+      updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),

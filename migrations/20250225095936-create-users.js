@@ -96,6 +96,14 @@ module.exports = {
           key: 'id'
         },
       },
+      academic_year_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'AcademicYears',
+          key: 'id'
+        },
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

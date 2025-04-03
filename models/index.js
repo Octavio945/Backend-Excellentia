@@ -8,9 +8,12 @@ const Grade = require('./Grade');
 const Payment = require('./Payment');
 const Schedule = require('./Schedule');
 const News = require('./News');
-const Question = require('./Question');
 const FiliereCourse = require('./FiliereCourse');
 const ProfesseurCourse = require('./ProfesseurCourse');
+const Chat = require('./Chat');
+const GroupChat = require('./GroupChat');
+const Notification = require('./Notification');
+const Rattrapage = require('./Rattrapage');
 
 module.exports = {
     User,
@@ -23,7 +26,10 @@ module.exports = {
     Payment,
     Schedule,
     News,
-    Question,
     FiliereCourse,
     ProfesseurCourse,
+    Chat,
+    GroupChat,
+    Notification,
+    Rattrapage
 };

@@ -24,6 +24,18 @@ const Payment = sequelize.define('Payment', {
     allowNull: true,
     unique: true,
   },
+  student_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'Users',
+      key: 'id',
+    },
+  },
+  remaining_amount: {
+    type: DataTypes.FLOAT,
+    allowNull: true,
+  }
 }, {
   timestamps: true,
 });

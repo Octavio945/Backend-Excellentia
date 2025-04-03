@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-const Filiere = require('./Filiere'); // Assurez-vous d'importer le modèle Filiere
+const Filiere = require('./Filiere'); 
+const AcademicYear = require('./AcademicYear'); // Import académique year
 
 const User = sequelize.define('User', {
   id: {
@@ -93,9 +94,17 @@ const User = sequelize.define('User', {
   },
   filiereId: {
     type: DataTypes.INTEGER,
-    allowNull: true, // Par défaut facultatif
+    allowNull: true,
     references: {
-      model: 'Filieres',
+      model: Filiere,
+      key: 'id',
+    },
+  },
+  academic_year_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: AcademicYear,
       key: 'id',
     },
   },
@@ -107,6 +116,9 @@ const User = sequelize.define('User', {
 
 // Relation avec Filiere
 User.belongsTo(Filiere, { foreignKey: 'filiereId' });
+
+// Relation avec AcademicYear
+User.belongsTo(AcademicYear, { foreignKey: 'academic_year_id' });
 
 // Validation pour rendre la filière obligatoire uniquement pour les étudiants
 User.beforeValidate((user, options) => {
